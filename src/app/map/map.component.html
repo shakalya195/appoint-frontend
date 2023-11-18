@@ -1,0 +1,28 @@
+<div>
+    <span class="btn" (click)="log()">MAP</span>
+    <span class="btn" (click)="addUser()">USER</span>
+    <span class="btn" (click)="addJob()">JOB</span>
+    <span class="btn" (click)="updateMyLocation()">Update My Location</span>
+</div>
+<div class="searchTagWrap">
+    <input type="text" [(ngModel)]="tagString" (keyup.enter)="searchGlobal()" class="searchTag" placeholder="Search" />
+</div>
+<div class="role-item" (click)="selectTag('')" [ngClass]="{'active': selectedTag==''}">
+    All
+</div>
+<div *ngFor="let tag of tags" (click)="selectTag(tag)" class="role-item" [ngClass]="{'active':selectedTag==tag}" [style.color]="tag.color">
+    {{tag?.title}}
+</div>
+<div class="flex">
+    <div id="list">
+        <pre>{{Object?.keys(userPointers)?.length | json}}</pre>
+    </div>
+    <div id="map" class="map"></div>
+    
+    <div id="pop" class="ol-popup">
+        <a href="javascript://" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content"></div>
+    </div>
+</div>
+
+<!-- ****************************** -->

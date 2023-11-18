@@ -1,0 +1,42 @@
+<div class="body">
+
+	<div *ngIf="tab=='LOGIN'" class="main">  	
+			<div class="signup">
+				<div class="p-15">
+					<label for="chk" aria-hidden="true">Login</label>
+					<div class="phoneWrapper">
+						<img class="flag" src="assets/in.png"/>
+						<input [(ngModel)]="user.dialCode" type="text"  class="dialCode" readonly/>
+						<input [(ngModel)]="user.phone" type="phone" name="phone" placeholder="Phone" required="">
+					</div>
+					<br/>
+					<input [(ngModel)]="user.password" type="password" name="password" placeholder="Password" required="">
+					<br/>
+					<button (click)="login()">Login</button>
+					<p class="loginError">{{loginError ? loginError : ''}}</p>
+					<p (click)="tab='REGISTER'" class="info-text">Don't have an account! <br/> register here</p>
+				</div>
+			</div>
+	</div>
+
+	<div *ngIf="tab=='REGISTER'"  class="main">  	
+			<div class="signup">
+				<div class="p-15">
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input [(ngModel)]="user.name" type="text" name="txt" placeholder="User name" required="">
+					<br/>
+					<div class="phoneWrapper">
+						<img class="flag" src="assets/in.png"/>
+						<input [(ngModel)]="user.dialCode" type="text"  class="dialCode" readonly />
+						<input [(ngModel)]="user.phone" type="phone" name="phone" placeholder="Phone" required="">
+					</div>
+					<br/>
+					<input [(ngModel)]="user.password" type="password" name="password" placeholder="Password" required="">
+					<br/>
+					<button (click)="register()">Register</button>
+					<p class="loginError">{{loginError ? loginError : ''}}</p>
+					<p (click)="tab='LOGIN'" class="info-text">have an account? <br/> login here</p>
+				</div>
+			</div>
+	</div>
+</div>

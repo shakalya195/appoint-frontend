@@ -1,0 +1,20 @@
+
+<div class="container">
+    <h2 class="mt-4">Add Location</h2>
+    <div class="form-group mb-10">
+        <label>Title</label>
+        <input [(ngModel)]="point.name" type="text"  class="form-control"/>
+    </div>
+    <div class="form-group mb-2">
+        <label>Description</label>
+        <input [(ngModel)]="point.description" type="text"  class="form-control"/>
+    </div>
+
+    <div *ngFor="let tag of tags" (click)="selectTag(tag)" class="role-item" [ngClass]="{'active':tag==selectedTag}">
+        {{tag?.title}}
+    </div>
+
+    <button (click)="save()" mat-button color="primary">Save</button>
+    
+</div>
+{{data | json}}

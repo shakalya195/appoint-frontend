@@ -1,1 +1,127 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "node_modules/ol/ol.css";
+body{
+    margin:0px;
+    padding:0px;
+    font-family: sans-serif;
+    background: #fff;
+    /* background: linear-gradient(to bottom, #cd9bd8, #fceaff, #d0abd8); */
+}
+#onesignal-bell-container.onesignal-reset.onesignal-bell-container-bottom-right{
+    bottom:50px;
+}
+.bottom-navigation-wrapper{
+    width: 100%;
+    background: #fbf0fd;
+    border-bottom: solid thin #eee;
+}
+.bottom-navigation{
+    display: flex;
+    max-width: 400px;
+    margin: 0px auto;
+    justify-content: space-around;
+}
+.bottom-navigation > div{
+    padding: 20px 25px;
+    cursor: pointer;
+}
+.bottom-navigation > div i{
+    margin:5px;
+}
+
+.tag{
+    background: #f9baba;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: capitalize;
+    font-size: 12px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+/* profile placeholder image */
+.profile-placeholder{
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    font-size: 4rem;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 20px;
+    margin-bottom: 5px;
+}
+.profile-placeholder b{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.role-item{
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px 10px 10px 5px;
+    border: solid thin;
+    border-radius: 5px;
+    cursor: pointer;
+    color:#666;
+    transition: all 1s;
+    text-transform: capitalize;
+}
+.role-item.active{
+    background: #a05893;
+    color: #fdfdfd !important;
+    border-color: #8a5858;
+}
+input{
+    padding: 5px;
+    font-size: 20px;
+    border: solid thin #888;
+    border-radius: 4px;
+    color: #555;
+}
+.title{
+    margin-top:0px;
+}
+.block-location {
+    padding: 10px;
+    border: solid thin #e8e8e8;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    position: relative;
+    transition: all 1s, height 2s;
+    opacity:1;
+    height:200px;
+    /* background-color: red; */
+}
+.block-location:hover{
+    border: solid thin #ccc;
+}
+.block-location.isDeleted{
+    opacity: 0;
+    height: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+.block-location .title{
+    margin-top:2px;
+}   
+
+.mb-5{ margin-bottom: 5px;}
+.mb-10{ margin-bottom: 10px;}
+.mb-15{ margin-bottom: 15px;}
+.mb-20{ margin-bottom: 20px;}
+.mb-25{ margin-bottom: 25px;}
+.mb-30{ margin-bottom: 30px;}
+.mb-35{ margin-bottom: 35px;}
+.mb-40{ margin-bottom: 40px;}
+
+.monospace{
+    letter-spacing: 2px;
+    font-family: monospace;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #ccc;
+    opacity: 1; /* Firefox */
+}

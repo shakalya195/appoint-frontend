@@ -1,0 +1,43 @@
+.profile{
+    text-align: center;
+    padding:15px;
+}
+.profile img{
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+.profile h1{
+    font-size: 20px;
+    line-height: 20px;
+    margin: 5px;
+}
+.profile-item{
+    padding:15px;
+    border-bottom: solid thin #0000001f;
+    cursor: pointer;
+}
+.profile-item.active{
+    background-color: blueviolet;
+    color:#fff;
+}
+.profile-page{
+    display: flex;
+}
+.profile-page .page-left{flex:1; background: #fbf0fd;}
+.profile-page .page-right{flex:3; padding:20px;}
+.remove{
+    position: absolute;
+    top:10px;
+    right:10px;
+    text-decoration: none;
+    font-family: 'Font Awesome 6 Free';
+    color:red;
+    display: none;
+    opacity: 0;
+    transition: all 1s;
+}
+.block-location:hover .remove{
+    display: inline-block;
+    opacity: 1;
+}

@@ -1,0 +1,57 @@
+<div class="chat">
+    <div class="conversations" [ngClass]="{'active':listMode}">
+        <div class="profile">
+            <!-- <img [src]="user?.image" onerror="this.src='assets/user.jpg'"/> -->
+            <div class="profile-placeholder" [style.backgroundColor]="user?.color">
+                <b>{{user?.name?.slice(0,2)}}</b>
+            </div>
+            <h1>{{user?.name}}</h1>
+            <small>{{user?.phone}}</small><br/>
+            <!-- <small (click)="logout()">Logout</small><br/> -->
+            <!-- <small (click)="generateKeyPair()">GENERATE</small> -->
+            <hr/>
+            <div (click)="addNewConversation()"> <small class="add-new pointer">+Add New</small></div>
+        </div>
+        <div *ngFor="let item of conversations"
+        (click)="selectConversation(item)" 
+        [ngClass]="{'active':item.phone == conversation?.phone}"
+        class="conversations-single"
+        >
+            {{item?.name}}
+            <a *ngIf="item?.unread > 0" class="unread">{{item?.unread}}</a>
+        </div>
+        <!-- <div (click)="addNewConversation()" class="conversations-single">
+            Add New
+        </div> -->
+        <!-- <pre>{{conversations | json}}</pre> -->
+    </div>
+    <div *ngIf="conversation"  class="conversation">
+        <div class="conversation-upper">
+            <div class="conversation-header">
+      
+                <img  *ngIf="!listMode" (click)="listMode = !listMode" class="toggle-btn" src="assets/back-button.png" />
+                
+                <input [(ngModel)]="conversation.name" type="text" class="con-title-editable" />
+                <span class="single-phone">{{conversation?.phone}}</span>
+                <span>
+                    <span class="btn" (click)="changeName(conversation.phone,conversation.name)">Save</span>
+                    <span class="btn" (click)="removeConversation(conversation)">Delete</span>
+                </span>
+            </div>
+            <div class="messages" #scrollMe >
+                <div *ngFor="let msg of conversation?.messages" class="msg" [ngClass]="{'send':msg?.sender == user?.phone}">
+                   <span>{{msg?.text}}</span>
+                   <div class="loader-typing" *ngIf="msg?.uid && !msg?.close">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="message">
+            <input [(ngModel)]="text" (keyup.enter)="sendMessage(true)" type="text" />
+            <a (click)="sendMessage(true)" class="btn">SEND</a>
+        </div>
+    </div>
+</div>

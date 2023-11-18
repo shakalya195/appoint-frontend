@@ -1,0 +1,16 @@
+<div class="body">
+
+	<div  class="main">  	
+			<div class="signup">
+					<label for="chk" aria-hidden="true">Verify Phone</label>
+                    <p>{{user?.dialCode}} {{user?.phone}}</p>
+					<input [(ngModel)]="otp" type="text" name="otp" placeholder="OTP" required="">
+					<br/>
+                    <!-- <p (click)="generateOTP()">GenerateOTP</p> -->
+					<button (click)="validateOTP()">Verify</button>
+
+					<!-- <span (click)="skip=!skip" class="badge" [ngClass]="{'active':skip}"></span> -->
+			</div>
+	</div>
+    <!-- <pre>{{user | json}}</pre> -->
+</div>

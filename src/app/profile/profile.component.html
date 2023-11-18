@@ -1,0 +1,59 @@
+<div class="profile-page">
+  
+    <div class="page-left profile">
+        <!-- <img [src]="user?.image" onerror="this.src='assets/user.jpg'"/> -->
+        <div class="profile-placeholder" [style.backgroundColor]="user?.color">
+            <b>{{user?.name?.slice(0,2)}}</b>
+        </div>
+        <h1>{{user?.name}}</h1>
+        <small>{{user?.phone}}</small><br/>
+        <hr/>
+        <div class="profile-item" [ngClass]="{'active':tab=='PROFILE'}" (click)="initProfile()">
+            Profile Settings
+        </div>
+        <div class="profile-item" [ngClass]="{'active':tab=='LOCATION'}" (click)="initLocations()">
+            My Locations
+        </div>
+        <div class="profile-item" [ngClass]="{'active':tab=='SECURITY'}" (click)="initSecurity()">
+            Security
+        </div>
+        <div class="profile-item" (click)="logout()">
+            Logout
+        </div>
+    </div>
+
+    <div class="page-right" [ngSwitch]="tab">
+        <div *ngSwitchCase="'PROFILE'">
+            <h2>Name</h2>
+            <input [(ngModel)]="user.name" type="text" (change)="changeName()" />
+
+            <h2>Change Color</h2>
+            <input [(ngModel)]="user.color" type="color"  style="width: 90px;height: 50px;" (change)="changeColor()"/>
+
+            <h2>Change a role <div *ngIf="user?.role" class="role-item active">{{user?.role}}</div></h2>
+            <div *ngFor="let role of roles" (click)="changeRole(role.title)" class="role-item" [ngClass]="{'active':role.title==user.role}">
+                {{role?.title}}
+            </div>
+
+            <pre>{{roles | json}}</pre>
+        </div>
+
+
+        <div *ngSwitchCase="'LOCATION'">
+            <h2>My Locations</h2>
+            <div *ngFor="let item of locations; let index=index" class="block-location" [ngClass]="{'isDeleted':item.isDeleted}">
+                <h3 class="title mb-10"><span class="tag" [style.backgroundColor]="getBackgroundColor(item.tag)" style="color:#fff">{{item?.tag}}</span> {{item?.name}}</h3>
+                <div class="mb-10">
+                    <span *ngFor="let tag of item.tags" class="tag" >{{tag}}</span>
+                </div>
+                <div class="mb-10 monospace">LngLat: <span>[{{item?.loc}}]</span></div>
+                <div class="mb-10"><small>Expire At: {{item?.expireAt | date:'hh:mm a dd MMM yyyy'}}</small></div>
+                <a (click)="removeLocation(index)" href="javascript://" class="remove">X</a>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
